@@ -69,7 +69,7 @@ const CTALogoOne = styled.img`
 const Signup = styled.a`
     font-weight: bold;
     color: #f9f9f9;
-    background-color: #0043ee;
+    background-color: #0356fc;
     margin-bottom: 12px;
     width: 100%;
     letter-spacing: 1.5px;
