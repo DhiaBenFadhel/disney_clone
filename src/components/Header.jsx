@@ -1,6 +1,18 @@
+import { auth, provider } from "../firebase";
 import styled from "styled-components";
 
 const Header = (props) => {
+    const handleAuth = () => {
+        auth
+            .signInWithPopup(provider)
+            .then((result) => {
+                console.log(result);
+            })
+            .catch((error) => {
+                alert(error.message);
+            });
+    };
+
     return (
         <Nav>
             <Logo>
@@ -32,6 +44,7 @@ const Header = (props) => {
                     <span>SERIES</span>
                 </a>
             </NavMenu>
+            <LoginBtn onClick={handleAuth}>Login</LoginBtn>
         </Nav>
     );
 }
@@ -84,6 +97,7 @@ const NavMenu = styled.div`
         padding: 0 12px;
 
         img{
+            padding-right: 2px;
             height: 20px;
             min-width: 20px;
             width: 20px;
@@ -95,7 +109,7 @@ const NavMenu = styled.div`
             font-size: 13px;
             letter-spacing: 1.42px;
             line-height:1.08;
-            padding: 2px 0px;
+            padding: 2px;
             white-space: nowrap;
             position: relative;
 
@@ -125,9 +139,26 @@ const NavMenu = styled.div`
             }
         }
     }
-    /* @media (max-width: 768px){
+    @media (max-width: 768px){
         display: none;
-    } */
+    }
+`;
+
+const LoginBtn = styled.a`
+    background-color: #090b13;
+    padding: 8px 16px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border: 1px solid #f9f9f9;
+    border-radius: 4px;
+    transition: all .2s ease 0s;
+
+    &:hover{
+        background-color: #f9f9f9;
+        color: #090b13;
+        border-color: transparent;
+    }
+    cursor: pointer;
 `;
 
 export default Header;
