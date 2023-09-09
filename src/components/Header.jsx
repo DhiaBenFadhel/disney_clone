@@ -3,14 +3,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { selectUserName, selectUserEmail, selectUserPhoto, setUserLoginDetails } from "../features/user/UserSlice";
 import styled from "styled-components";
+import { useEffect } from "react";
 
 const Header = (props) => {
 
     const dispatch = useDispatch();
-    const navigat = useNavigate();
+    const navigate = useNavigate();
     const userName = useSelector(selectUserName);
     const userPhoto = useSelector(selectUserPhoto);
 
+    useEffect(() => {
+        auth.onAuthStateChanged(async (user) => {
+            if (user) {
+                setUser(user);
+                navigate("/home");
+            }
+        });
+    }, [userName]);
 
     const handleAuth = () => {
         auth
