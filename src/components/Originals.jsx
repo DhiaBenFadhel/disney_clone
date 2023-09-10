@@ -1,43 +1,23 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectOriginal } from "../features/movies/movieSlice";
 
 const Originals = (props) => {
+  const movies = useSelector(selectOriginal);
   return (
     <Container>
       <h2> Originals</h2>
       <Content>
-        <Wrap>
-          <Link to="/">
-            <img
-              src="https://movies.universalpictures.com/media/01-tbt-dm-thumbnail-803x519-kr-f01-032223-1-64221ab53000f-1.jpg"
-              alt=""
-            />
-          </Link>
-        </Wrap>
-        <Wrap>
-          <Link to="/">
-            <img
-              src="https://movies.universalpictures.com/media/01-dem-dm-thumbnail-803x519-pl-f01-041123-1-6439e5a7dc1a0-1.jpg"
-              alt=""
-            />
-          </Link>
-        </Wrap>
-        <Wrap>
-          <Link to="/">
-            <img
-              src="https://movies.universalpictures.com/media/04-strays-dm-thumbnail-803x519-kr-f01-051723-1-1-1-64665420dce9c-1.jpg"
-              alt=""
-            />
-          </Link>
-        </Wrap>
-        <Wrap>
-          <Link to="/">
-            <img
-              src="https://movies.universalpictures.com/media/06-opp-dm-mobile-banner-1080x745-now-pl-f01-071223-64bab982784c7-1.jpg"
-              alt=""
-            />
-          </Link>
-        </Wrap>
+        {movies &&
+          movies.map((movie, key) => (
+            <Wrap key={key}>
+              {movie.id}
+              <Link to={"/detail/" + movie.id}>
+                <img src={movie.cardImg} alt={movie.title} />
+              </Link>
+            </Wrap>
+          ))}
       </Content>
     </Container>
   );

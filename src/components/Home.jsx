@@ -21,7 +21,7 @@ const Home = (props) => {
   const [trending, setTrending] = useState([]);
 
   useEffect(() => {
-    console.log("hello");
+    // console.log("hello");
     db.collection("movies").onSnapshot((snapshot) => {
       let recommends = [];
       let newDisney = [];
@@ -30,41 +30,39 @@ const Home = (props) => {
 
       snapshot.docs.forEach((doc) => {
         const movieData = { id: doc.id, ...doc.data() };
-        console.log(recommends); 
-        // eslint-disable-next-line default-case
+        // console.log(recommends);
         switch (movieData.type) {
-          case "recommend":
-            recommends = [...recommends,(movieData)];
+          default:
+            recommends = [...recommends, movieData];
             break;
 
           case "new":
-            newDisney = [...newDisney, (movieData)];
+            newDisney = [...newDisney, movieData];
             break;
 
           case "original":
-            originals = [...originals, (movieData)];
+            originals = [...originals, movieData];
             break;
 
           case "trending":
-            trending = [...trending, (movieData)];
+            trending = [...trending, movieData];
             break;
         }
       });
+      setRecommends(recommends);
+      setNewDisney(newDisney);
+      setOriginals(originals);
+      setTrending(trending);
+
+      dispatch(
+        setMovies({
+          recommend: recommends,
+          newDisney: newDisney,
+          original: originals,
+          trending: trending,
+        })
+      );
     });
-
-    setRecommends(recommends);
-    setNewDisney(newDisney);
-    setOriginals(originals);
-    setTrending(trending);
-
-    dispatch(
-      setMovies({
-        recommend: recommends,
-        newDisney: newDisney,
-        original: originals,
-        trending: trending,
-      })
-    );
   }, [dispatch, newDisney, originals, recommends, trending, userName]);
 
   return (
