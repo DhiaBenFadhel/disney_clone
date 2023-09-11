@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   selectUserName,
-  /*selectUserEmail,*/
   selectUserPhoto,
   setUserLoginDetails,
   setSignOutState,
@@ -21,12 +20,12 @@ const Header = (props) => {
       dispatch(
         setUserLoginDetails({
           name: user.displayName,
-          email: user.email,
           photo: user.photoURL,
         })
       ),
     [dispatch]
   );
+
   useEffect(() => {
     auth.onAuthStateChanged(async (user) => {
       if (user) {
@@ -42,6 +41,7 @@ const Header = (props) => {
         .signInWithPopup(provider)
         .then((result) => {
           setUser(result.user);
+          navigate("/home"); // After successful login, navigate to the home page
         })
         .catch((error) => {
           alert(error.message);
@@ -51,7 +51,7 @@ const Header = (props) => {
         .signOut()
         .then(() => {
           dispatch(setSignOutState());
-          navigate("/");
+          navigate("/"); // After successful sign out, navigate to the login page
         })
         .catch((error) => alert(error.message));
     }
