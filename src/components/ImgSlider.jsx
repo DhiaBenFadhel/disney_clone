@@ -16,22 +16,22 @@ const ImgSlider = (props) => {
   return (
     <Carousel {...settings}>
       <Wrap>
-        <Link to="_blank">
+        <Link>
           <img src="/images/slider-badag.jpg" alt="" />
         </Link>
       </Wrap>
       <Wrap>
-        <Link to="_blank">
+        <Link>
           <img src="/images/slider-badging.jpg" alt="" />
         </Link>
       </Wrap>
       <Wrap>
-        <Link to="_blank">
+        <Link>
           <img src="/images/slider-scale.jpg" alt="" />
         </Link>
       </Wrap>
       <Wrap>
-        <Link to="_blank">
+        <Link>
           <img src="/images/slider-scales.jpg" alt="" />
         </Link>
       </Wrap>
