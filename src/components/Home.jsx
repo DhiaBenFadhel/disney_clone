@@ -64,7 +64,7 @@ const Home = (props) => {
       );
     });
   }, [dispatch, newDisney, originals, recommends, trending, userName]);
-
+  
   return (
     <Container>
       <ImgSlider />
