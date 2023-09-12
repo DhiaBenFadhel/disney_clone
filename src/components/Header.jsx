@@ -33,7 +33,7 @@ const Header = (props) => {
         navigate("/home");
       }
     });
-  }, [userName, setUser, navigate]);
+  }, [userName]);
 
   const handleAuth = () => {
     if (!userName) {
