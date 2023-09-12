@@ -1,6 +1,6 @@
 import { auth, provider } from "../firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   selectUserName,
   selectUserPhoto,
@@ -59,45 +59,49 @@ const Header = (props) => {
 
   return (
     <Nav>
-      <Logo>
-        <img src="/images/logo.svg" alt="Disney+" />
-      </Logo>
+      <Link to="/">
+        <Logo>
+          <img src="/images/logo.svg" alt="Disney+" />
+        </Logo>
+      </Link>
 
       {!userName ? (
         <LoginBtn onClick={handleAuth}>Login</LoginBtn>
       ) : (
         <>
           <NavMenu>
-            <a href="/home">
+            <Link to="/home">
               <img src="/images/home-icon.svg" alt="HOME" />
               <span>HOME</span>
-            </a>
-            <a href="/search">
+            </Link>
+            <Link to="/search">
               <img src="/images/search-icon.svg" alt="SEARCH" />
               <span>SEARCH</span>
-            </a>
-            <a href="/watchlist">
+            </Link>
+            <Link to="/watchlist">
               <img src="/images/watchlist-icon.svg" alt="WATCHLIST" />
               <span>WATCHLIST</span>
-            </a>
-            <a href="/originals">
+            </Link>
+            <Link to="/originals">
               <img src="/images/original-icon.svg" alt="ORIGINALS" />
               <span>ORIGINALS</span>
-            </a>
-            <a href="/movies">
+            </Link>
+            <Link to="/movies">
               <img src="/images/movie-icon.svg" alt="MOVIEs" />
               <span>MOVIES</span>
-            </a>
-            <a href="/series">
+            </Link>
+            <Link to="/series">
               <img src="/images/series-icon.svg" alt="SERIES" />
               <span>SERIES</span>
-            </a>
+            </Link>
           </NavMenu>
           <SignOut>
-            <USerImg src={userPhoto} alt={userName} />
-            <DropDown>
-              <span onClick={handleAuth}>Sign Out</span>
-            </DropDown>
+            <Link to="/">
+              <USerImg src={userPhoto} alt={userName} />
+              <DropDown>
+                <span onClick={handleAuth}>Sign Out</span>
+              </DropDown>
+            </Link>
           </SignOut>
         </>
       )}
