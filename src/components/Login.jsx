@@ -29,7 +29,7 @@ const Login = (props) => {
         navigate("/home");
       }
     });
-  }, [userName]);
+  }, [userName,navigate,setUser]);
 
   const handleAuth = () => {
     if (!userName) {

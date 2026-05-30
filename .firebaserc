@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "disney-clone-6028d"
-  }
+    "default": "disney-clone-v2",
+    "disney-v2": "disney-clone-v2"
+  },
+  "targets": {},
+  "etags": {}
 }
