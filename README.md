@@ -1,6 +1,6 @@
 # Disney+ Clone
 
-# [LIVE DEMO 🔥](https://disney-clone-6028d.web.app)
+# [LIVE DEMO 🔥](https://dineyplus-clone.netlify.app/)
 
 
 ## Getting Started with Create React App
