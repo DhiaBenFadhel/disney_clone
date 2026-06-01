@@ -13,6 +13,7 @@ const Recommends = (props) => {
         {movies &&
           movies.map((movie, key) => (
             <Wrap key={key}>
+              {movie.id}
               <Link to={"/detail/" + movie.id}>
                 <img src={movie.cardImg} alt={movie.title} />
               </Link>
@@ -46,13 +47,7 @@ const Wrap = styled.div`
   position: relative;
   transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
   border: 3px solid rgba(249, 249, 249, 0.1);
-  a {               /* ← add this block */
-    display: block;
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    opacity: 0;
-  }
+  
   img {
     width: 100%;
     inset: 0px;

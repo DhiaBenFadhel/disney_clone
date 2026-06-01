@@ -20,20 +20,23 @@ const Header = (props) => {
       dispatch(
         setUserLoginDetails({
           name: user.displayName,
-          photo: user.photoURL,
-        })
+          email: user.email,
+          photo: user.photoURL || "",
+        }),
       ),
-    [dispatch]
+    [dispatch],
   );
 
   useEffect(() => {
     auth.onAuthStateChanged(async (user) => {
       if (user) {
         setUser(user);
-        navigate("/home");
+        if (window.location.pathname === "/") {
+          navigate("/home");
+        }
       }
     });
-  }, [userName, navigate, setUser]);
+  }, [navigate, setUser]);
 
   const handleAuth = () => {
     if (!userName) {
@@ -222,7 +225,10 @@ const LoginBtn = styled.a`
 `;
 
 const USerImg = styled.img`
-  height: 90%;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
 `;
 
 const DropDown = styled.div`
